@@ -1,0 +1,17 @@
+[
+    {
+        "id" : 1,
+        "matricula" : "11111",
+        "marca" : "aaa"
+    },
+    {
+        "id" : 2,
+        "matricula" : "2222",
+        "marca" : "bbb"
+    },
+    {
+        "id" : 3,
+        "matricula" : "3333",
+        "marca" : "ccc"
+    }
+]
