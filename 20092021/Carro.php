@@ -3,10 +3,19 @@
 class Carro {
 
     // Atributos
-    private string $matricula;
-    private string $marca;
+    private $id;
+    private $matricula;
+    private $marca;
 
     // Acessores e Modificadores
+    public function setId($value){
+        $this->id = $value;
+    }
+
+    public function getId(){
+        return $this->id;
+    }
+
     public function setMatricula($value){
         $this->matricula = $value;
     }
@@ -39,6 +48,22 @@ class Carro {
         //Executar instrução SQL na base de dados
         $conexao->exec($sql);
     }  
+
+    public function apagar(){
+
+        //Conectar á base de dados
+        $dsn = "mysql:host=localhost;dbname=stand";
+        $user = "root";
+        $pass = "";
+        $conexao = new PDO($dsn, $user, $pass);
+
+        // Instrução SQL para registar o carro
+        $sql = "DELETE FROM carros WHERE id = " . $this->id;
+
+        //Executar instrução SQL na base de dados
+        $conexao->exec($sql);
+
+    }
     
     public function listar(){
 
@@ -50,6 +75,28 @@ class Carro {
 
         // Instrução SQL para selecionar dados da bd
         $sql = "SELECT * FROM carros";
+
+        // Preparar instrução 
+        $query = $conexao->query($sql);
+
+        // Executar a query e gravar resultados
+        $carros = $query->fetchAll(PDO::FETCH_ASSOC);
+
+        // Retornar os dados
+        return $carros;
+
+    }
+
+    public function getById(){
+
+        //Conectar á base de dados
+        $dsn = "mysql:host=localhost;dbname=stand";
+        $user = "root";
+        $pass = "";
+        $conexao = new PDO($dsn, $user, $pass);
+
+        // Instrução SQL para selecionar dados da bd
+        $sql = "SELECT * FROM carros WHERE id =" . $this->id;
 
         // Preparar instrução 
         $query = $conexao->query($sql);
