@@ -3,27 +3,30 @@
 // Incluir a classe Carro
 include_once "Carro.php";
 
-if (isset($_GET["id"])){
-
-    $carro = new Carro();
-    $carro->setId($_GET["id"]);
-    $carroEditar = $carro->getById()[0];
-
-}
-
 //Identificar que o botão foi clicado
 if (isset($_POST["btnGravar"])){
 
+    $id = $_POST["txtId"];
     $matricula = $_POST["txtMatricula"];
     $marca = $_POST["txtMarca"];
 
     // Criar objecto
     $carro = new Carro();
+    $carro->setId($id);
     $carro->setMatricula($matricula);
     $carro->setMarca($marca);
 
     // Executar o comportamento
-    $carro->registar();
+    $carro->gravar();
+
+}
+
+//Carregar dados da base de dados
+if (isset($_GET["id"])){
+
+    $carro = new Carro();
+    $carro->setId($_GET["id"]);
+    $carroEditar = $carro->getById()[0];
 
 }
 
@@ -37,6 +40,8 @@ if (isset($_POST["btnGravar"])){
     <body>
 
         <form method="POST">
+
+            <input type="hidden" name="txtId" value="<?php echo $carroEditar["id"]; ?>" />
             
             <label>Matricula</label>
             <input name="txtMatricula" type="text" value="<?php echo $carroEditar["matricula"]; ?>" />

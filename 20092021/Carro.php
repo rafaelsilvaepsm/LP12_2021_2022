@@ -109,6 +109,24 @@ class Carro {
 
     }
 
+    public function gravar(){
+
+        //Conectar á base de dados
+        $dsn = "mysql:host=localhost;dbname=stand";
+        $user = "root";
+        $pass = "";
+        $conexao = new PDO($dsn, $user, $pass);
+
+        // Instrução SQL para registar o carro
+        //$sql = "INSERT INTO carros(matricula, marca) VALUES ('" . $this->matricula . "', '" . $this->marca . "')";
+        $sql = "UPDATE carros SET matricula = '" . $this->matricula . "', marca='" . $this->marca . "' WHERE ID =" . $this->id;
+
+        //echo $sql;
+
+        //Executar instrução SQL na base de dados
+        $conexao->exec($sql);
+    }
+
 }
 
 ?>
