@@ -43,10 +43,17 @@ class Carro {
         $conexao = new PDO($dsn, $user, $pass);
 
         // Instrução SQL para registar o carro
-        $sql = "INSERT INTO carros(matricula, marca) VALUES ('" . $this->matricula . "', '" . $this->marca . "')";
+        $sql = "INSERT INTO carros(matricula, marca) VALUES ('" . $this->matricula . "', '" . $this->marca . "', 'aaa')";
 
-        //Executar instrução SQL na base de dados
-        $conexao->exec($sql);
+        try {
+            //Executar instrução SQL na base de dados
+            $conexao->exec($sql);
+
+            echo "Registo com sucesso";
+        } catch (\Throwable $th) {
+            echo "Ocorreu um erro ao inserir na base dados";
+        }
+
     }  
 
     public function apagar(){
