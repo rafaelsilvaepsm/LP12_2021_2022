@@ -1,6 +1,6 @@
 <?php
 
-class Carro {
+class Carro implements JsonSerializable {
 
     // Atributos
     private $id;
@@ -132,6 +132,16 @@ class Carro {
 
         //Executar instrução SQL na base de dados
         $conexao->exec($sql);
+    }
+
+    public function jsonSerialize(){
+
+        return [
+            'id' => $this->id,
+            'matricula' => $this->matricula,
+            'marca' => $this->marca
+        ];
+
     }
 
 }
