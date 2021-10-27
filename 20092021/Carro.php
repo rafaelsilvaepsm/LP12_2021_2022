@@ -43,7 +43,7 @@ class Carro implements JsonSerializable {
         $conexao = new PDO($dsn, $user, $pass);
 
         // Instrução SQL para registar o carro
-        $sql = "INSERT INTO carros(matricula, marca) VALUES ('" . $this->matricula . "', '" . $this->marca . "', 'aaa')";
+        $sql = "INSERT INTO carros(matricula, marca) VALUES ('" . $this->matricula . "', '" . $this->marca . "')";
 
         try {
             //Executar instrução SQL na base de dados
