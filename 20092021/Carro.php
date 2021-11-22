@@ -1,5 +1,7 @@
 <?php
 
+include_once "Conexao.php";
+
 class Carro implements JsonSerializable {
 
     // Atributos
@@ -37,10 +39,7 @@ class Carro implements JsonSerializable {
     public function registar(){
 
         //Conectar á base de dados
-        $dsn = "mysql:host=localhost;dbname=stand";
-        $user = "root";
-        $pass = "";
-        $conexao = new PDO($dsn, $user, $pass);
+        $conexao = new Conexao();
 
         // Instrução SQL para registar o carro
         $sql = "INSERT INTO carros(matricula, marca) VALUES ('" . $this->matricula . "', '" . $this->marca . "')";
@@ -59,10 +58,7 @@ class Carro implements JsonSerializable {
     public function apagar(){
 
         //Conectar á base de dados
-        $dsn = "mysql:host=localhost;dbname=stand";
-        $user = "root";
-        $pass = "";
-        $conexao = new PDO($dsn, $user, $pass);
+        $conexao = new Conexao();
 
         // Instrução SQL para registar o carro
         $sql = "DELETE FROM carros WHERE id = " . $this->id;
@@ -75,10 +71,7 @@ class Carro implements JsonSerializable {
     public function listar(){
 
         //Conectar á base de dados
-        $dsn = "mysql:host=localhost;dbname=stand";
-        $user = "root";
-        $pass = "";
-        $conexao = new PDO($dsn, $user, $pass);
+        $conexao = new Conexao();
 
         // Instrução SQL para selecionar dados da bd
         $sql = "SELECT * FROM carros";
@@ -97,10 +90,7 @@ class Carro implements JsonSerializable {
     public function getById(){
 
         //Conectar á base de dados
-        $dsn = "mysql:host=localhost;dbname=stand";
-        $user = "root";
-        $pass = "";
-        $conexao = new PDO($dsn, $user, $pass);
+        $conexao = new Conexao();
 
         // Instrução SQL para selecionar dados da bd
         $sql = "SELECT * FROM carros WHERE id =" . $this->id;
@@ -119,10 +109,7 @@ class Carro implements JsonSerializable {
     public function gravar(){
 
         //Conectar á base de dados
-        $dsn = "mysql:host=localhost;dbname=stand";
-        $user = "root";
-        $pass = "";
-        $conexao = new PDO($dsn, $user, $pass);
+        $conexao = new Conexao();
 
         // Instrução SQL para registar o carro
         //$sql = "INSERT INTO carros(matricula, marca) VALUES ('" . $this->matricula . "', '" . $this->marca . "')";
